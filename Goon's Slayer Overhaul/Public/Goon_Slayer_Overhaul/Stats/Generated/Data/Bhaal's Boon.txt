@@ -1,4 +1,4 @@
-// ==================================== Let The Slaughter Begin ====================================
+// ==================================== Bhaal's Boon ====================================
 // Bug Fix: Stacks of the condition are no longer lost for reasons other than an attacker missing their attack.
 // Changes: Now checks for the SLAYER tag instead of player specific statuses. Does nothing on its own, but would allow this to be applied to NPCs, or natively function with creating further custom templates for Slayer level scaling.
 

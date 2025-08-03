@@ -1,4 +1,4 @@
-// ==================================== Piercing Growl ====================================
+// ==================================== Slay ====================================
 // Bug Fix: Now uses Maneuver Save DC instead of Spell Save DC.
 // Bug Fix: Now checks for the Prone status group as a condition for critical damage, instead of just the base Prone condition specifically.
 // Changes: Now looks for more Bleeding-like conditions, instead of just the Bleeding condition itself.
