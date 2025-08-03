@@ -1,0 +1,34 @@
+// ==================================== Let The Slaughter Begin ====================================
+// Bug Fix: Stacks of the condition are no longer lost for reasons other than an attacker missing their attack.
+// Changes: Now checks for the SLAYER tag instead of player specific statuses. Does nothing on its own, but would allow this to be applied to NPCs, or natively function with creating further custom templates for Slayer level scaling.
+
+new entry "BHAALS_BOON_SLAYER"
+type "StatusData"
+data "StatusType" "BOOST"
+using "BHAALS_BOON_SLAYER"
+// Bhaal's Boon
+// data "DisplayName" "h12bece1dgb65cg4828g95degf47375267661;2"
+// Bhaal revels in the affected entity's gift for murder, granting it a +[1] bonus to &lt;LSTag Tooltip="ArmourClass"&gt;Armour Class&lt;/LSTag&gt; per marked kill.&lt;br&gt;&lt;br&gt;[1] point of this bonus Armour Class is lost each time the Slayer avoids an attack.
+// data "Description" "h0d64397fg9bebg4386gb429gcfd56f374fed;2"
+// data "DescriptionParams" "1"
+// data "Icon" "GenericIcon_Intent_Buff"
+// data "StackId" "BHAALS_BOON_SLAYER"
+// data "StackPriority" "1"
+// data "StackType" "Additive"
+// data "Boosts" "AC(1)"
+// data "RemoveConditions" "IsMiss() or (not HasStatus('SLAYER_PLAYER') or not HasStatus('SLAYER_PLAYER_10'))"
+data "RemoveConditions" "not Tagged('SLAYER')"
+// data "RemoveEvents" "OnAttacked;OnStatusRemoved"
+data "RemoveEvents" "OnStatusRemoved"
+// data "StatusPropertyFlags" "MultiplyEffectsByDuration;FreezeDuration"
+// data "OnRemoveFunctors" "IF(RemoveCause(StatusRemoveCause.Condition)):ApplyStatus(Target.BHAALS_BOON_SLAYER,100,BHAALS_BOON_SLAYER.Duration-1)"
+data "OnRemoveFunctors" ""
+// data "StatusEffect" "78df3737-0405-43fc-8b6e-e702b8de7589"
+data "Passives" "Goon_Bhaals_Boon_Slayer"
+
+new entry "Goon_Bhaals_Boon_Slayer"
+type "PassiveData"
+data "Properties" "IsHidden"
+data "Conditions" "IsMiss()"
+data "StatsFunctorContext" "OnAttacked"
+data "StatsFunctors" "IF(context.HasContextFlag(StatsFunctorContext.OnAttacked)):ApplyStatus(Target.BHAALS_BOON_SLAYER,100,BHAALS_BOON_SLAYER.Duration-1)"

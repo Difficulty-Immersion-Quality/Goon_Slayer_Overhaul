@@ -1,0 +1,43 @@
+// ==================================== Piercing Growl ====================================
+// Bug Fix: Now uses Maneuver Save DC instead of Spell Save DC.
+// Bug Fix: Now checks for the Prone status group as a condition for critical damage, instead of just the base Prone condition specifically.
+// Changes: Now looks for more Bleeding-like conditions, instead of just the Bleeding condition itself.
+
+new entry "Target_Slam_Slayer"
+type "SpellData"
+data "SpellType" "Target"
+// using "Target_UnarmedAttack"
+using "Target_Slam_Slayer"
+// data "SpellSuccess" "DealDamage(max(1,4d6+UnarmedMeleeAbilityModifier), Slashing);IF(HasStatus('BLEEDING') and not HasStatus('PRONE')):ApplyStatus(CONTAGION_FLESH_ROT_1,100,3);IF(HasStatus('BLEEDING') and HasStatus('PRONE') and not SavingThrow(Ability.Strength,SourceSpellDC())):ApplyStatus(CONTAGION_FLESH_ROT,100,-1)"
+data "SpellSuccess" "DealDamage(max(1,4d6+UnarmedMeleeAbilityModifier), Slashing);IF(HasStatus('SG_Bleeding') and not HasStatus('SG_Prone')):ApplyStatus(CONTAGION_FLESH_ROT_1,100,3);IF(HasStatus('SG_Bleeding') and HasStatus('SG_Prone') and not SavingThrow(Ability.Strength,ManeuverSaveDC())):ApplyStatus(CONTAGION_FLESH_ROT,100,-1)"
+// data "Icon" "Action_Monster_Slayer_Slam"
+// Slay
+// data "DisplayName" "h460e20c6g102cg45e3g87c9g9b4c31d971b2;5"
+// Rake your malevolent claws across the body of your target.
+// data "Description" "h454884c4g6f72g47f2g9fc0g32a264d71cac;3"
+// data "DescriptionParams" "DealDamage(4d6+UnarmedMeleeAbilityModifier, Slashing)"
+// If the target is &lt;LSTag Type="Status" Tooltip="BLEEDING"&gt;Bleeding&lt;/LSTag&gt;, they are afflicted with &lt;LSTag Type="Status" Tooltip="CONTAGION_FLESH_ROT_1"&gt;Contagion Poisoned: Stage 1&lt;/LSTag&gt;. &lt;br&gt;&lt;br&gt;If the target is &lt;LSTag Type="Status" Tooltip="PRONE"&gt;Prone&lt;/LSTag&gt;, the attack will be a &lt;LSTag Tooltip="CriticalHit"&gt;Critical Hit&lt;/LSTag&gt;.&lt;br&gt;&lt;br&gt;If the target is &lt;LSTag Type="Status" Tooltip="BLEEDING"&gt;Bleeding&lt;/LSTag&gt; and &lt;LSTag Type="Status" Tooltip="PRONE"&gt;Prone&lt;/LSTag&gt;, the attack will be a Critical Hit and the target will possibly become &lt;LSTag Type="Status" Tooltip="CONTAGION_FLESH_ROT"&gt;Stricken With Flesh Rot&lt;/LSTag&gt;.
+// data "ExtraDescription" "h6dfdd4c4ga640g4895gb482gc6da5856e23e;4"
+// data "TooltipDamageList" "DealDamage(4d6+UnarmedMeleeAbilityModifier, Slashing)"
+// data "TooltipStatusApply" "ApplyStatus(CONTAGION_FLESH_ROT_1 ,100,3);ApplyStatus(CONTAGION_FLESH_ROT,100,-1)"
+// data "PrepareSound" "CrSpell_Prepare_Slayer_Slam"
+// data "PrepareLoopSound" "CrSpell_Loop_Slayer_Slam"
+// data "CastSound" "CrSpell_Cast_Slayer_Slam"
+// data "TargetSound" "CrSpell_Impact_Slayer_Slam"
+// data "PrepareEffect" "617532b0-623a-4264-b9bf-16dc7b51a858"
+// data "CastEffect" "2416aebb-0a83-42ae-91ac-bf40fb6218cb"
+// data "HitEffect" "0b00d16a-9d49-41fb-933c-abb31df8535b"
+// data "DamageType" "Slashing"
+// data "Sheathing" "DontChange"
+
+// ==================================== Piercing Growl - 10
+
+new entry "Target_Slam_Slayer_10"
+type "SpellData"
+data "SpellType" "Target"
+// using "Target_Slam_Slayer"
+using "Target_Slam_Slayer_10"
+// data "SpellSuccess" "DealDamage(max(1,6d6+UnarmedMeleeAbilityModifier), Slashing); IF(HasStatus('BLEEDING') and not HasStatus('PRONE')):ApplyStatus(CONTAGION_FLESH_ROT_1,100,3);IF(HasStatus('BLEEDING') and HasStatus('PRONE') and not SavingThrow(Ability.Strength,SourceSpellDC())):ApplyStatus(CONTAGION_FLESH_ROT,100,-1)"
+data "SpellSuccess" "DealDamage(max(1,6d6+UnarmedMeleeAbilityModifier), Slashing);IF(HasStatus('SG_Bleeding') and not HasStatus('SG_Prone')):ApplyStatus(CONTAGION_FLESH_ROT_1,100,3);IF(HasStatus('SG_Bleeding') and HasStatus('SG_Prone') and not SavingThrow(Ability.Strength,ManeuverSaveDC())):ApplyStatus(CONTAGION_FLESH_ROT,100,-1)"
+// data "DescriptionParams" "DealDamage(6d6+UnarmedMeleeAbilityModifier, Slashing)"
+// data "TooltipDamageList" "DealDamage(6d6+UnarmedMeleeAbilityModifier, Slashing)"

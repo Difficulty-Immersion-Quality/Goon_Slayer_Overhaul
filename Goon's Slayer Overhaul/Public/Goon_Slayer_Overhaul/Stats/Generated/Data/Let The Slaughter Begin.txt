@@ -1,0 +1,90 @@
+// ==================================== Let The Slaughter Begin ====================================
+// Bug Fix: Now uses Maneuver Save DC instead of Spell Save DC.
+
+new entry "Shout_Sacrifice_Slayer"
+type "SpellData"
+data "SpellType" "Shout"
+using "Shout_Sacrifice_Slayer"
+// data "AreaRadius" "12"
+// data "SpellRoll" "not SavingThrow(Ability.Constitution,SourceSpellDC())"
+data "SpellRoll" "not SavingThrow(Ability.Constitution,ManeuverSaveDC())"
+// data "SpellSuccess" "ApplyStatus(MARKEDFORBHALL_SLAYER,100,4);IF(not Ally()):ApplyStatus(DAZED,100,1)"
+// data "SpellFail" "ApplyStatus(SAVED_AGAINST_HOSTILE_SPELL, 100, 0)"
+// data "TargetConditions" "not Self() and not Dead() and not Item()"
+// data "Icon" "Action_Monster_Slayer_LetTheSlaughterBegin"
+// Let The Slaughter Begin
+// data "DisplayName" "hbb413f2fg14b6g4df3gb5fegfa274579fa86;2"
+// Brand nearby creatures with a sinister mark so that their deaths make you harder to kill. 
+// data "Description" "hba663a88g9fc6g48c3g9e5fg2f392d3b36b6;7"
+// Marked targets are &lt;LSTag Type="Status" Tooltip="DAZED"&gt;Dazed&lt;/LSTag&gt;, and when they die, you gain a +[1] bonus to &lt;LSTag Tooltip="ArmourClass"&gt;Armour Class&lt;/LSTag&gt;.
+// data "ExtraDescription" "h3f155a28g0429g4ba6gbe53gef131c4df55a;1"
+// data "ExtraDescriptionParams" "1"
+// data "TooltipAttackSave" "Constitution"
+// data "TooltipStatusApply" "ApplyStatus(MARKEDFORBHALL_SLAYER,100,4);ApplyStatus(DAZED,100,1)"
+// data "PrepareSound" "CrSpell_Prepare_Slayer_BloodBath"
+// data "CastSound" "CrSpell_Cast_Slayer_SacrificiallyScream"
+// data "TargetSound" "CrSpell_Impact_Slayer_SacrificiallyScream"
+// data "CastTextEvent" "Cast"
+// data "UseCosts" "ActionPoint:1"
+// data "SpellAnimation" "8b8bb757-21ce-4e02-a2f3-97d55cf2f90b,,;d8b7f668-db2b-43b0-9707-5da2ed2cf27e,,;7521e279-1bb3-4105-b32d-8206234836a3,,;d172e037-7041-4352-9a20-5f4b185f9ef1,,;7bb52cd4-0b1c-4926-9165-fa92b75876a3,,;,,;,,;,,;,,"
+// data "SpellFlags" "IsHarmful"
+// data "SpellAnimationIntentType" "Aggressive"
+// data "RechargeValues" "5-6"
+// data "PrepareEffect" "09b965b7-0c92-440d-89a3-86f0442a2042"
+// data "CastEffect" "8bddb262-1829-4661-8624-f204704ae9fa"
+// data "Sheathing" "DontChange"
+
+// new entry "MARKEDFORBHALL_SLAYER"
+// type "StatusData"
+// data "StatusType" "BOOST"
+// Bhaal's Murderous Mark
+// data "DisplayName" "h1018acc1g67f5g45b9g8cd5g904d83af50e1;2"
+// Affected entity's death grants a +[1] &lt;LSTag Tooltip="ArmourClass"&gt;Armour Class&lt;/LSTag&gt; bonus to the Slayer.
+// data "Description" "he2f19ca6g7894g4b68gaed6gfc2c98b10639;3"
+// data "DescriptionParams" "1"
+// data "Icon" "GenericIcon_Intent_Buff"
+// data "StackId" "MARKEDFORBHALL_SLAYER"
+// data "StatusPropertyFlags" "InitiateCombat"
+// data "OnRemoveFunctors" "IF(RemoveCause(StatusRemoveCause.Death)):ApplyStatus(SELF,BHAALS_BOON_SLAYER,100,1);"
+// data "StatusEffect" "567f700b-42d1-4db6-bcb4-36942dc5e456"
+
+// ==================================== Orin - Let The Slaughter Begin
+
+new entry "Shout_LOW_Sacrifice_Slayer_Orin"
+type "SpellData"
+data "SpellType" "Shout"
+// using "Shout_Sacrifice_Slayer"
+using "Shout_LOW_Sacrifice_Slayer_Orin"
+// data "SpellRoll" "not SavingThrow(Ability.Constitution,SourceSpellDC())"
+data "SpellRoll" "not SavingThrow(Ability.Constitution,ManeuverSaveDC())"
+// data "SpellSuccess" "ApplyStatus(MARKEDFORBHALL_SLAYER,100,2);IF(not Ally()):ApplyStatus(DAZED,100,1)"
+// data "TooltipStatusApply" "ApplyStatus(MARKEDFORBHALL_SLAYER,100,2);ApplyStatus(DAZED,100,1)"
+// data "SpellFlags" "IsHarmful;IsEnemySpell"
+
+// ==================================== Sanguine Animation ====================================
+
+// new entry "Shout_LOW_LivingSacrifice_Slayer"
+// type "SpellData"
+// data "SpellType" "Shout"
+// using "Shout_Sacrifice_Slayer"
+// data "SpellProperties" "AOE:Spawn(46056850-5aa7-461b-a49e-6599b9c286f9,Projectile_AiHelper_Summon_Weak,LOW_BHAALTEMPLE_ORIN_PHASE2_BLOODSKELETON);AOE:SwitchDeathType(Explode);AI_ONLY:AOE:ApplyStatus(SELF,AI_HELPER_BUFF_LARGE,100,4)"
+// data "AreaRadius" "16"
+// data "SpellRoll" ""
+// data "SpellSuccess" ""
+// data "TargetConditions" "Self()"
+// data "AoEConditions" "IsTargetableCorpse() and CanStand('6c06cda2-6e13-4663-a6f6-c4bb7564c10f') and TargetSizeEqualOrSmaller(Size.Medium)  and SizeEqualOrGreater(Size.Small)"
+// Sanguine Animation
+// data "DisplayName" "hb4d2e138gec58g4a76gb538g99188ecf0909;2"
+// Nearby Blood surfaces transform into bloodmarrow skeletons under your control.
+// data "Description" "hc2aed4d4g695ag4acaga6b1ged5df6e9ce3a;2"
+// data "DescriptionParams" ""
+// data "ExtraDescription" ""
+// data "ExtraDescriptionParams" ""
+// data "TooltipAttackSave" ""
+// data "TooltipStatusApply" ""
+// data "UseCosts" ""
+// data "SpellAnimation" "5e57443f-284e-47b2-915e-5b6417db269c,,;d8b7f668-db2b-43b0-9707-5da2ed2cf27e,,;7521e279-1bb3-4105-b32d-8206234836a3,,;d172e037-7041-4352-9a20-5f4b185f9ef1,,;5bcdefbb-2194-46c2-ac77-0b2d8472a5f7,,;,,;5fdb66be-7506-411a-a7ea-c4783288aac8,,;,,;,,"
+// data "SpellFlags" "IsHarmful;IsEnemySpell"
+// data "RechargeValues" "6"
+// data "RequirementConditions" "HasStatus('LOW_BHAALTEMPLE_ORIN_PHASE2')"
+// data "CastEffect" "88fecb83-73d5-4a1e-993c-4df510f81ce9"
